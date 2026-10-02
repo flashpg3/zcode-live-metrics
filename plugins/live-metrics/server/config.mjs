@@ -7,7 +7,7 @@ import { fileURLToPath } from "node:url";
 const here = path.dirname(fileURLToPath(import.meta.url));
 export const PLUGIN_ROOT = path.resolve(here, "..");
 
-// Version single source of truth (PRD 4.6.7): everything else reads this file
+// Version single source of truth: everything else reads this file
 // or is asserted in sync by test/contracts.test.mjs.
 export const VERSION = JSON.parse(
   fs.readFileSync(path.join(PLUGIN_ROOT, ".zcode-plugin", "plugin.json"), "utf8"),
@@ -35,7 +35,7 @@ export const config = {
   swiftPath: "/usr/bin/swift",
 };
 
-// State-file names inside dataDir (the cross-process contracts, see ADR-0001).
+// State-file names inside dataDir (the cross-process contracts).
 export const FILES = {
   daemonPid: "daemon.pid",
   dashboard: "dashboard.json",

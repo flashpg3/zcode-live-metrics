@@ -1,7 +1,7 @@
 #!/bin/bash
 # Hook entry (SessionStart / UserPromptSubmit / Stop). Writes the
 # active-session signal (the focus anchor) and revives a dead daemon.
-# Always exit 0, never output: the session must not notice us (PRD §3).
+# Always exit 0, never output: the session must not notice us.
 set -u
 ROOT="${CLAUDE_PLUGIN_ROOT:-$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)}"
 DATA_DIR="${ZCODE_METRICS_PLUGIN_DATA:-${TMPDIR:-/tmp}/zcode-live-metrics}"

@@ -1,7 +1,6 @@
 # live-metrics · 开发者文档
 
-实现遵循 [PRD](../../docs/PRD.md) 与 [ADR-0001](../../docs/adr/0001-daemon-thin-proxy-process-model.md)。
-术语以根目录 [CONTEXT.md](../../CONTEXT.md) 为准。
+本文件是 live-metrics 的实现说明：模块地图、跨进程契约、三节奏循环、开发与测试。
 
 ## 模块地图
 
@@ -18,7 +17,7 @@ plugins/live-metrics/
 │   │   ├── hostlog.mjs         宿主事件日志 → 生成中状态 + 焦点信号
 │   │   └── titles.mjs          sqlite 只读会话标题（失败静默降级）
 │   ├── core/
-│   │   ├── metrics.mjs         口径表纯函数（PRD §4.2）
+│   │   ├── metrics.mjs         口径表纯函数
 │   │   ├── sessions.mjs        会话存储（环形截断）与快照视图
 │   │   └── focus.mjs           焦点状态机（跟随 + 防抖 + 钉住）
 │   ├── daemon.mjs              单例接管、三节奏循环、生命周期规则
@@ -37,7 +36,7 @@ plugins/live-metrics/
 └── test/                       node --test（契约 + 单元，31 例）
 ```
 
-## 跨进程契约（ADR-0001）
+## 跨进程契约
 
 | 文件（dataDir 下） | 写方 → 读方 | 内容 |
 |---|---|---|
@@ -75,6 +74,6 @@ echo '{"jsonrpc":"2.0","id":1,"method":"tools/list"}' | node server/main.mjs
 
 ## 已知边界
 
-- 生成中的 token 流不存在于本机任何日志（PRD §5 已验证），速度位生成期间显示"上次实测"。
-- Windows 不支持（hooks/MCP 硬编码 `/bin/bash`，属 PRD 非目标）。
+- 生成中的 token 流不存在于本机任何日志，速度位生成期间显示"上次实测"。
+- Windows 不支持（hooks/MCP 硬编码 `/bin/bash`）。
 - 模型上下文窗表是 best-effort，未知模型只显示绝对 token 数。

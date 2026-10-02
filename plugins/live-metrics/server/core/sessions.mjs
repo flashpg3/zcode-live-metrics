@@ -86,7 +86,7 @@ export class SessionStore {
   }
 }
 
-// Everything the UI shows for the focused session (PRD §4.2 口径).
+// Everything the UI shows for the focused session.
 export function sessionView(s, now) {
   const samples = s.samples;
   const last = samples[samples.length - 1] ?? null;

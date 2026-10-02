@@ -1,4 +1,4 @@
-// Focus state machine (PRD §4.4): auto-follow the most recently active
+// Focus state machine: auto-follow the most recently active
 // session; a manual pin overrides until unpinned; switches are debounced
 // (candidate must win 2 consecutive update cycles).
 export class Focus {

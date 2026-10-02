@@ -1,4 +1,4 @@
-// Metric 口径 (PRD §4.2) against synthetic samples with hand-checked numbers.
+// Metric 口径 against synthetic samples with hand-checked numbers.
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import {

@@ -54,7 +54,7 @@
 | 上下文水位 | 最近一次 `input + cache_read + cache_creation`；内置模型上下文窗表给百分比 |
 
 生成中的调用在宿主日志里不存在 token 数据（已验证），因此速度位在生成期间显示**上次实测值**并明确标注；
-这是只读模式下的物理上限，也是产品语义的一部分。详见 [docs/PRD.md](docs/PRD.md)。
+这是只读模式下的物理上限，也是产品语义的一部分。
 
 ## 工作原理
 
@@ -67,9 +67,6 @@ rollout jsonl ──120ms 尾读──▶ daemon 聚合引擎 ──变更即推
 hooks ──▶ active-session.json ──▶ 焦点会话判定 ────────┤
 MCP 薄代理 ──▶ HTTP ◀───────────────────────────────────┘
 ```
-
-进程模型（daemon + 薄 MCP 代理 + hooks）的决策缘由见
-[ADR-0001](docs/adr/0001-daemon-thin-proxy-process-model.md)。
 
 ## 安装部署
 
@@ -86,9 +83,6 @@ GitHub 版并存调试。
 
 ## 文档
 
-- [PRD（v1.0.0 需求与验收标准）](docs/PRD.md)
-- [ADR-0001：两层进程模型](docs/adr/0001-daemon-thin-proxy-process-model.md)
-- [术语表](CONTEXT.md)
 - 开发者文档：[plugins/live-metrics/README.md](plugins/live-metrics/README.md)
 
 ## License

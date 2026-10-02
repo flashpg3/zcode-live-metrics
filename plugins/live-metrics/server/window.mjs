@@ -1,4 +1,4 @@
-// Floating-window orchestration (PRD §4.3): spawn the native macOS window
+// Floating-window orchestration: spawn the native macOS window
 // (WKWebView via swift) or the Linux browser app-mode fallback, re-adopt a
 // surviving window, and auto-reopen a lost one within the 30s budget.
 import { spawn, execFileSync } from "node:child_process";

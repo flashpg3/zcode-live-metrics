@@ -1,4 +1,4 @@
-// History view (PRD §4.5): aggregate across sessions and days by re-scanning
+// History view: aggregate across sessions and days by re-scanning
 // the rollout directory itself — no own storage, no data copies. Scanning is
 // incremental (per-file byte offsets) and batched so it never crowds the
 // real-time path.

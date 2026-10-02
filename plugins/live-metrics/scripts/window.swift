@@ -1,6 +1,6 @@
 // ZCode Live Metrics — native floating window (macOS, WKWebView).
 // Usage: /usr/bin/swift window.swift <dashboardUrl> <dashboardJsonPath>
-// Watches dashboard.json (the daemon's claim file, see ADR-0001): reloads on
+// Watches dashboard.json (the daemon's claim file): reloads on
 // url/bootId change, self-exits after 90s without a live engine.
 import AppKit
 import WebKit

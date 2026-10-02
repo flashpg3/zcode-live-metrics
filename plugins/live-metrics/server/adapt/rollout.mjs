@@ -1,5 +1,5 @@
 // Rollout log adapter — the ONLY place that knows the rollout format
-// (file-name pattern, type tag, usage field paths). PRD §6: host-format
+// (file-name pattern, type tag, usage field paths). Host-format
 // assumptions live in the adapter layer, single point of change.
 import fs from "node:fs";
 import path from "node:path";

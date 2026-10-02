@@ -184,7 +184,7 @@ new EventSource("/api/stream").onmessage = (e) => {
 };
 
 setInterval(() => {
-  // keep the generating timer ticking between pushes (PRD A2: alive every second)
+  // keep the generating timer ticking between pushes
   if (snap?.focus?.generating) {
     render();
   }

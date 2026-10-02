@@ -1,4 +1,4 @@
-// Metric definitions — the 口径 table from PRD §4.2, as pure functions.
+// Metric definitions — the 口径 table, as pure functions.
 // All functions take sample objects produced by adapt/rollout.parseSample.
 
 // 单次实测速度: output tokens ÷ that call's generation seconds

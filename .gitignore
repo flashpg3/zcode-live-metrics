@@ -2,3 +2,9 @@
 node_modules/
 *.log
 .env
+
+# 本地开发文档，不入库
+/CONTEXT.md
+/.zcodeignore
+/docs/PRD.md
+/docs/adr/

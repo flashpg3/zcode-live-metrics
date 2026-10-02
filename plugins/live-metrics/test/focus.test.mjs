@@ -1,4 +1,4 @@
-// Focus state machine (PRD §4.4): follow the most recently active session,
+// Focus state machine: follow the most recently active session,
 // debounce switches, pin overrides everything.
 import { test } from "node:test";
 import assert from "node:assert/strict";

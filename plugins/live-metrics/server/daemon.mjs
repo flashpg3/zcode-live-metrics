@@ -1,6 +1,6 @@
-// Daemon engine (ADR-0001): singleton per machine, owns log tail-reading,
+// Daemon engine: singleton per machine, owns log tail-reading,
 // aggregation, focus, HTTP/SSE, floating-window orchestration and history.
-// Lifecycle rule (PRD §4.6): never exits while anything watches or any session
+// Lifecycle rule: never exits while anything watches or any session
 // is active; hard-capped at 24h; a killed daemon is revived by hooks/MCP.
 import fs from "node:fs";
 import { execFile, execFileSync } from "node:child_process";
@@ -29,7 +29,7 @@ function sleepSync(ms) {
   Atomics.wait(new Int32Array(sab), 0, 0, ms);
 }
 
-// --- singleton: take over (SIGTERM the old), never co-exist (PRD A5) ------
+// --- singleton: take over (SIGTERM the old), never co-exist ------
 function acquireSingleton() {
   ensureDataDir();
   const lockPath = statePath("daemon.lock");
@@ -173,7 +173,7 @@ export async function startDaemon() {
   });
   hostLog.poll(onEvent);
 
-  // Fast loop (PRD R1: ≤200ms to screen): poll 120ms, push on change.
+  // Fast loop: poll 120ms, push on change.
   setInterval(() => {
     try {
       rollouts.poll((sessionId, sample) => {
@@ -226,7 +226,7 @@ export async function startDaemon() {
     if (touched) scheduleBroadcast();
   }, 30_000);
 
-  // History scan: batched so it never crowds the real-time path (PRD §4.5).
+  // History scan: batched so it never crowds the real-time path.
   setInterval(() => {
     try {
       history.scan(2);

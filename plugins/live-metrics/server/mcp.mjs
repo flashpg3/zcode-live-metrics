@@ -1,4 +1,4 @@
-// MCP thin proxy (ADR-0001): a per-session stdio JSON-RPC process that owns
+// MCP thin proxy: a per-session stdio JSON-RPC process that owns
 // no state and dies with the host's connection pool. Forwards tool calls to
 // the daemon over loopback HTTP; spawns the daemon when it is not running.
 // Also persists userConfig to config.json so hook-spawned daemons see it.

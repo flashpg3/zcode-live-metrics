@@ -1,4 +1,4 @@
-// Version single-source (PRD §4.6.7): propagate plugin.json's version to the
+// Version single-source: propagate plugin.json's version to the
 // two marketplace listings. Run after bumping the plugin version.
 import fs from "node:fs";
 import path from "node:path";

@@ -1,4 +1,4 @@
-// File contracts (PRD §6): manifests, version single-source, hook plumbing,
+// File contracts: manifests, version single-source, hook plumbing,
 // window script presence, UI assets — the glue a refactor must not silently break.
 import { test } from "node:test";
 import assert from "node:assert/strict";
