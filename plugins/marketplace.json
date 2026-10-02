@@ -1,0 +1,23 @@
+{
+  "name": "dev-zcode-tool",
+  "owner": {
+    "name": "zcode-tool local dev"
+  },
+  "plugins": [
+    {
+      "name": "live-metrics",
+      "source": "./live-metrics",
+      "version": "1.0.0",
+      "description": "Real-time runtime metrics for ZCode: token throughput and prompt-cache hit rate. Sub-200ms completion-to-screen, honest mid-generation state, focus following, history view. Read-only observer.",
+      "displayName": "Live Metrics 实时指标监控",
+      "displayName_i18n": {
+        "zh-CN": "实时指标监控 Live Metrics"
+      },
+      "description_i18n": {
+        "zh-CN": "实时监控 ZCode 运行指标：token 处理速度与缓存命中率。完成数据 200ms 内上屏、生成中显示诚实的中场状态、多窗口焦点跟随、跨会话历史。只读取证，不影响会话。"
+      },
+      "category": "developer-tools",
+      "keywords": ["metrics", "monitoring", "tokens", "cache", "observability"]
+    }
+  ]
+}

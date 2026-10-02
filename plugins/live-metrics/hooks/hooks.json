@@ -1,0 +1,40 @@
+{
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/bin/bash \"${CLAUDE_PLUGIN_ROOT}/hooks/notify-session.sh\"",
+            "timeoutMs": 5000,
+            "statusMessage": "live-metrics: 记录会话上下文"
+          }
+        ]
+      }
+    ],
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/bin/bash \"${CLAUDE_PLUGIN_ROOT}/hooks/notify-session.sh\"",
+            "timeoutMs": 5000,
+            "statusMessage": "live-metrics: 记录会话上下文"
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/bin/bash \"${CLAUDE_PLUGIN_ROOT}/hooks/notify-session.sh\"",
+            "timeoutMs": 5000,
+            "statusMessage": "live-metrics: 记录会话上下文"
+          }
+        ]
+      }
+    ]
+  }
+}

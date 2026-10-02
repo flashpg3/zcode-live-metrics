@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Live Metrics</title>
+<link rel="stylesheet" href="/static/app.css">
+</head>
+<body>
+<header>
+  <div class="brand"><span id="dot" class="dot"></span><b>Live Metrics</b><span id="ver" class="dim"></span></div>
+  <div class="controls">
+    <select id="session" title="切换会话"></select>
+    <button id="pin" title="钉住当前会话 / 解锁">📌</button>
+    <button id="freeze" title="冻结画面（数据继续，显示暂停）">⏸</button>
+    <button id="open" title="在浏览器打开完整面板">↗</button>
+    <button id="tab-history" title="历史视图">历史</button>
+  </div>
+</header>
+
+<main id="view-live">
+  <div class="statusline"><span id="genstate">—</span><span id="lastact" class="dim"></span></div>
+
+  <div class="cards">
+    <div class="card">
+      <div class="label">单次实测 <span class="dim">t/s</span></div>
+      <div class="big" id="m-last" data-copy>—</div>
+      <div class="sub" id="m-last-sub" class="dim"></div>
+    </div>
+    <div class="card">
+      <div class="label">生成吞吐 <span class="dim">t/s</span></div>
+      <div class="big" id="m-gen" data-copy>—</div>
+      <div class="sub dim">Σ输出 ÷ Σ生成耗时</div>
+    </div>
+    <div class="card">
+      <div class="label">会话强度 <span class="dim">t/s</span></div>
+      <div class="big" id="m-int" data-copy>—</div>
+      <div class="sub dim">10s 窗口 · 含空闲</div>
+    </div>
+    <div class="card">
+      <div class="label">缓存命中率</div>
+      <div class="big" id="m-cache" data-copy>—</div>
+      <div class="sub dim">累计 <span id="c-all">—</span> · 60s <span id="c-60">—</span> · 最近 <span id="c-last">—</span></div>
+    </div>
+    <div class="card">
+      <div class="label">上下文水位</div>
+      <div class="big" id="m-ctx" data-copy>—</div>
+      <div class="sub dim" id="m-ctx-sub"></div>
+      <div class="bar"><i id="m-ctx-bar"></i></div>
+    </div>
+  </div>
+
+  <div class="panel">
+    <div class="panel-title">会话强度曲线 <span class="dim">（最近 10 分钟 · 每秒采样）</span></div>
+    <svg id="chart" viewBox="0 0 600 120" preserveAspectRatio="none"></svg>
+  </div>
+
+  <div class="panel" id="models-panel">
+    <div class="panel-title">模型拆分</div>
+    <div id="models"></div>
+  </div>
+
+  <div class="panel">
+    <div class="panel-title">最近调用 <span class="dim">（点击数值复制）</span></div>
+    <table class="calls"><thead>
+      <tr><th>时间</th><th>模型</th><th>输入</th><th>缓存</th><th>输出</th><th>t/s</th><th>耗时</th></tr>
+    </thead><tbody id="calls"></tbody></table>
+  </div>
+</main>
+
+<main id="view-history" hidden>
+  <div class="panel">
+    <div class="panel-title">按天 <span class="dim" id="hist-meta"></span></div>
+    <table class="calls"><thead>
+      <tr><th>日期</th><th>调用</th><th>输入</th><th>缓存读</th><th>输出</th><th>主要模型</th></tr>
+    </thead><tbody id="hist-days"></tbody></table>
+  </div>
+  <div class="panel">
+    <div class="panel-title">按会话</div>
+    <table class="calls"><thead>
+      <tr><th>会话</th><th>最近活跃</th><th>调用</th><th>输出</th><th>主要模型</th></tr>
+    </thead><tbody id="hist-sessions"></tbody></table>
+  </div>
+</main>
+
+<footer>
+  <span id="foot-note" class="dim">只读监控 · 数据不出本机</span>
+</footer>
+
+<div id="toast" hidden></div>
+<script src="/static/app.js"></script>
+</body>
+</html>

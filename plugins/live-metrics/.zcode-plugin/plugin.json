@@ -1,0 +1,20 @@
+{
+  "name": "live-metrics",
+  "version": "1.0.0",
+  "description": "Real-time runtime metrics for ZCode: token throughput and prompt-cache hit rate. Completion-to-screen latency under 200ms, honest mid-generation state, focus following, history view. Read-only observer, zero impact on the session.",
+  "author": {
+    "name": "zcode-tool"
+  },
+  "license": "MIT",
+  "userConfig": {
+    "floating_window": {
+      "type": "boolean",
+      "title": "自动显示悬浮指标窗",
+      "description": "开启后悬浮窗随会话自动弹出并始终跟随当前活跃会话；关闭后可通过 /metrics dashboard 或 open_dashboard 工具手动打开浏览器面板",
+      "default": true
+    }
+  },
+  "hooks": "hooks/hooks.json",
+  "mcpServers": ".mcp.json",
+  "commands": "commands"
+}

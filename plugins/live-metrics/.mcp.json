@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "live-metrics": {
+      "command": "/bin/bash",
+      "args": ["${CLAUDE_PLUGIN_ROOT}/scripts/launch.sh"],
+      "env": {
+        "ZCODE_METRICS_PLUGIN_DATA": "${CLAUDE_PLUGIN_DATA}",
+        "ZCODE_METRICS_FLOATING": "${user_config.floating_window}"
+      }
+    }
+  }
+}

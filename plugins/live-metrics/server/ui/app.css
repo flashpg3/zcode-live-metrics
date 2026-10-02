@@ -1,0 +1,89 @@
+:root {
+  --bg: #0d1117;
+  --panel: #131a23;
+  --border: #1f2733;
+  --text: #d7dde5;
+  --dim: #7d8590;
+  --accent: #58a6ff;
+  --green: #3fb950;
+  --amber: #d29922;
+  --red: #f85149;
+  --mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, monospace;
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+html, body { margin: 0; height: 100%; }
+body {
+  background: var(--bg); color: var(--text);
+  font: 13px/1.45 -apple-system, "PingFang SC", "Segoe UI", sans-serif;
+  display: flex; flex-direction: column;
+}
+header {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 8px 10px; border-bottom: 1px solid var(--border);
+  background: var(--panel); flex-wrap: wrap; gap: 6px;
+}
+.brand { display: flex; align-items: center; gap: 7px; }
+.brand b { font-size: 13px; }
+.dim { color: var(--dim); font-size: 11px; }
+.dot { width: 9px; height: 9px; border-radius: 50%; background: #444; display: inline-block; }
+.dot.gen { background: var(--green); animation: pulse 1.1s ease-in-out infinite; }
+.dot.idle { background: #444; }
+@keyframes pulse { 50% { opacity: .35; } }
+.controls { display: flex; gap: 6px; align-items: center; }
+select {
+  background: #0b1016; color: var(--text); border: 1px solid var(--border);
+  border-radius: 6px; max-width: 170px; font-size: 12px; padding: 3px 6px;
+}
+button {
+  background: #0b1016; color: var(--text); border: 1px solid var(--border);
+  border-radius: 6px; padding: 3px 8px; cursor: pointer; font-size: 12px;
+}
+button:hover { border-color: var(--accent); }
+button.on { background: #14304a; border-color: var(--accent); color: var(--accent); }
+
+main { flex: 1; overflow-y: auto; padding: 10px; display: flex; flex-direction: column; gap: 10px; }
+.statusline { display: flex; justify-content: space-between; font-size: 12px; padding: 0 2px; }
+#genstate { color: var(--green); }
+#genstate.idle { color: var(--dim); }
+
+.cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 8px; }
+.card {
+  background: var(--panel); border: 1px solid var(--border); border-radius: 8px;
+  padding: 8px 10px; min-width: 0;
+}
+.label { font-size: 11px; color: var(--dim); }
+.big {
+  font-family: var(--mono); font-size: 22px; font-weight: 600;
+  font-variant-numeric: tabular-nums; margin: 2px 0; cursor: copy;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.sub { font-size: 11px; color: var(--dim); font-variant-numeric: tabular-nums; }
+.bar { height: 4px; background: #0b1016; border-radius: 2px; margin-top: 5px; overflow: hidden; }
+.bar i { display: block; height: 100%; width: 0%; background: var(--accent); transition: width .4s; }
+
+.panel { background: var(--panel); border: 1px solid var(--border); border-radius: 8px; padding: 8px 10px; }
+.panel-title { font-size: 11px; color: var(--dim); margin-bottom: 6px; }
+#chart { width: 100%; height: 90px; display: block; }
+
+.model-row { display: flex; align-items: center; gap: 8px; margin: 5px 0; font-size: 12px; }
+.model-name { min-width: 130px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.model-bar-wrap { flex: 1; height: 8px; background: #0b1016; border-radius: 4px; overflow: hidden; }
+.model-bar { height: 100%; background: linear-gradient(90deg, var(--accent), #79c0ff); }
+.model-meta { color: var(--dim); font-variant-numeric: tabular-nums; min-width: 150px; text-align: right; }
+.retry-badge { background: #5a3d10; color: var(--amber); border-radius: 4px; padding: 0 5px; font-size: 10px; }
+
+table.calls { width: 100%; border-collapse: collapse; font-size: 12px; font-variant-numeric: tabular-nums; }
+table.calls th { color: var(--dim); text-align: left; font-weight: 500; font-size: 11px; padding: 3px 6px; border-bottom: 1px solid var(--border); }
+table.calls td { padding: 3px 6px; border-bottom: 1px solid #161d27; white-space: nowrap; }
+table.calls td.num { cursor: copy; }
+table.calls tr:last-child td { border-bottom: none; }
+.src-badge { color: var(--dim); font-size: 10px; }
+
+footer { padding: 6px 10px; border-top: 1px solid var(--border); font-size: 11px; }
+
+#toast {
+  position: fixed; bottom: 14px; left: 50%; transform: translateX(-50%);
+  background: #1c2a3a; color: var(--text); border: 1px solid var(--accent);
+  padding: 5px 12px; border-radius: 6px; font-size: 12px;
+}
